@@ -6,9 +6,6 @@
   <title>++</title>
   <link rel="icon" href="https://i.pinimg.com/736x/8c/56/87/8c5687c8d8f032193f248687577b0940.jpg" type="image/jpeg" />
 
-  <!-- intl-tel-input CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
-
   <style>
     body {
       margin: 0;
@@ -27,56 +24,13 @@
       position: relative;
     }
 
-    form {
-      padding: 3rem 3rem 4rem;
-      border-radius: 8px;
-      width: 350px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
-      background: transparent;
-    }
-
-    label {
-      display: block;
-      font-weight: bold;
-      text-align: left;
-      font-size: 1.1rem;
-      margin-bottom: 0.6rem;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"] {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border-radius: 6px;
+    iframe {
       border: none;
-      font-size: 1.15rem;
-      box-sizing: border-box;
-    }
-
-    input[type="submit"] {
-      padding: 1rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 640px;
+      height: 855px;
       background-color: white;
-      color: black;
-      font-weight: bold;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1.2rem;
-      margin-top: 1rem;
-      transition: background-color 0.3s ease;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #ddd;
-    }
-
-    h2 {
-      margin-bottom: 0.6rem;
-      font-size: 2rem;
     }
 
     #back-btn {
@@ -98,108 +52,11 @@
       background-color: white;
       color: black;
     }
-
-    #notification {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #222;
-      color: #fff;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      font-size: 1rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
-    }
-
-    #notification.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* === Override intl-tel-input styles to make dropdown text black === */
-    .iti__country,
-    .iti__country-name,
-    .iti__dial-code {
-      color: black !important;
-    }
   </style>
 </head>
 <body>
   <a href="index.html" id="back-btn">← home</a>
 
-  <form id="newsletter-form">
-    <h2>Join the Newsletter</h2>
-
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" required />
-
-    <label for="surname">Surname</label>
-    <input type="text" id="surname" name="surname" required />
-
-    <label for="phone">Phone Number</label>
-    <input type="tel" id="phone" name="phone" required />
-
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required />
-
-    <input type="submit" value="Submit" />
-  </form>
-
-  <div id="notification">
-    ✅ Thank You For Supporting Draigo, We will contact you soon 🫶🏻
-  </div>
-
-  <!-- intl-tel-input JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"></script>
-  <script>
-    const phoneInput = document.querySelector("#phone");
-    const iti = window.intlTelInput(phoneInput, {
-      initialCountry: "auto",
-      nationalMode: false,
-      separateDialCode: true,
-      preferredCountries: ["za", "us", "gb", "ng"],
-      geoIpLookup: function (callback) {
-        fetch("https://ipapi.co/json")
-          .then(res => res.json())
-          .then(data => callback(data.country_code))
-          .catch(() => callback("za"));
-      },
-      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
-    });
-
-    const form = document.getElementById('newsletter-form');
-    const notification = document.getElementById('notification');
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const name = form.name.value.trim();
-      const surname = form.surname.value.trim();
-      const phone = iti.getNumber();
-      const email = form.email.value.trim();
-
-      if (!name || !surname || !phone || !email) {
-        alert('Please fill out all fields.');
-        return;
-      }
-
-      const subject = encodeURIComponent('New Newsletter Signup');
-      const body = encodeURIComponent(`Name: ${name}\nSurname: ${surname}\nPhone: ${phone}\nEmail: ${email}`);
-      const mailtoLink = `mailto:projectdraigo@gmail.com?subject=${subject}&body=${body}`;
-
-      window.location.href = mailtoLink;
-
-      notification.classList.add('show');
-      setTimeout(() => {
-        notification.classList.remove('show');
-      }, 4000);
-    });
-  </script>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfSNsyNFIMVOyIIP6_jWalIna_3Lp5zTuncKIrheWEovqlUYg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 </body>
 </html>

@@ -17,6 +17,7 @@
       color: white;
       cursor: url('gothiccursordraigo.jpg'), auto;
       overflow-x: hidden;
+      background: black;
     }
 
     video {
@@ -39,82 +40,20 @@
       z-index: -1;
     }
 
-    .content {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+    .top-section {
+      padding-top: 10px;
+      background: rgba(0, 0, 0, 0.8);
+      width: 100%;
       text-align: center;
-      z-index: 1;
-      opacity: 0;
-      animation: fadeIn 0.5s ease forwards;
-      animation-delay: 0.5s;
-      user-select: none;
-      padding-top: 50px; /* add some top padding so content isn't hidden behind countdown */
-    }
-
-    h1 {
-      font-size: clamp(1.8rem, 5vw, 2rem);
-      letter-spacing: 2px;
-      background: linear-gradient(90deg, #ffffff, #bbbbbb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .back-btn {
-      position: absolute; /* changed from fixed */
-      top: 98px; /* previously 86px, moved down 12px (~3mm more) */
-      left: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: background 0.3s, opacity 2s ease;
       z-index: 3;
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
-      animation-delay: 0.5s;
-      user-select: none;
-    }
-
-    .back-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .second-page {
-      padding: 120px 10vw 60px; /* added bottom padding for spacing */
-      background: #111;
-      text-align: center;
-      line-height: 1.8;
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      font-weight: 300;
-      letter-spacing: 0.5px;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
     }
 
     .countdown-container {
-      position: absolute; /* changed from fixed */
-      top: 0;
-      left: 0;
-      width: 100%;
       display: flex;
       justify-content: center;
       gap: 10px;
       padding: 10px 0;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 9999;
       font-family: 'Helvetica Neue', sans-serif;
-      opacity: 1;
-      animation: none;
       user-select: none;
     }
 
@@ -138,7 +77,62 @@
       color: white;
     }
 
-    /* Responsive Back Button Positioning */
+    .back-btn {
+      margin: 10px auto 0;
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s;
+      user-select: none;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .content {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+      animation-delay: 0.5s;
+      user-select: none;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 2rem);
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #ffffff, #bbbbbb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .second-page {
+      padding: 120px 10vw 60px;
+      background: #111;
+      text-align: center;
+      line-height: 1.8;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
     @media (max-width: 768px) {
       .back-btn {
         left: 50%;
@@ -158,16 +152,16 @@
   <!-- Overlay -->
   <div class="overlay"></div>
 
-  <!-- Countdown Timer -->
-  <div class="countdown-container">
-    <div class="countdown-box"><span id="days">00</span><br>Days</div>
-    <div class="countdown-box"><span id="hours">00</span><br>Hours</div>
-    <div class="countdown-box"><span id="minutes">00</span><br>Mins</div>
-    <div class="countdown-box"><span id="seconds">00</span><br>Secs</div>
+  <!-- Countdown + Back button section -->
+  <div class="top-section">
+    <div class="countdown-container">
+      <div class="countdown-box"><span id="days">00</span><br>Days</div>
+      <div class="countdown-box"><span id="hours">00</span><br>Hours</div>
+      <div class="countdown-box"><span id="minutes">00</span><br>Mins</div>
+      <div class="countdown-box"><span id="seconds">00</span><br>Secs</div>
+    </div>
+    <button class="back-btn" onclick="window.location.href='index.html'">← Back</button>
   </div>
-
-  <!-- Back button -->
-  <button class="back-btn" onclick="window.location.href='index.html'">← Back</button>
 
   <!-- Hero Section -->
   <div class="content">

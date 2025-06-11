@@ -51,6 +51,7 @@
       animation: fadeIn 0.5s ease forwards;
       animation-delay: 0.5s;
       user-select: none;
+      padding-top: 50px; /* add some top padding so content isn't hidden behind countdown */
     }
 
     h1 {
@@ -63,7 +64,7 @@
 
     .back-btn {
       position: fixed;
-      top: 20px;
+      top: 60px; /* move below countdown */
       left: 20px;
       background: rgba(255, 255, 255, 0.1);
       color: white;
@@ -73,7 +74,7 @@
       cursor: pointer;
       border-radius: 8px;
       transition: background 0.3s, opacity 2s ease;
-      z-index: 1;
+      z-index: 3;
       opacity: 0;
       animation: fadeIn 2s ease forwards;
       animation-delay: 0.5s;
@@ -85,7 +86,7 @@
     }
 
     .second-page {
-      padding: 120px 10vw;
+      padding: 120px 10vw 60px; /* added bottom padding for spacing */
       background: #111;
       text-align: center;
       line-height: 1.8;
@@ -101,33 +102,48 @@
     }
 
     .countdown-container {
-      position: absolute;
-      top: 30px;
-      left: 50%;
-      transform: translateX(-50%);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
       display: flex;
-      gap: 15px;
-      z-index: 2;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
       font-family: 'Helvetica Neue', sans-serif;
+      opacity: 1;
+      animation: none;
+      user-select: none;
     }
 
     .countdown-box {
       background: #111;
-      padding: 15px 10px;
+      padding: 8px 6px;
       border-radius: 4px;
       text-align: center;
-      font-size: 1.1rem;
+      font-size: 0.75rem;
       font-weight: 500;
-      min-width: 60px;
+      min-width: 45px;
       border: 1px solid #444;
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+      color: white;
     }
 
     .countdown-box span {
-      font-size: 1.5rem;
+      font-size: 1rem;
       font-weight: bold;
       display: block;
       color: white;
+    }
+
+    /* Responsive Back Button Positioning */
+    @media (max-width: 768px) {
+      .back-btn {
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
   </style>
 </head>
@@ -139,7 +155,7 @@
     Your browser does not support the video tag.
   </video>
 
-  <!-- Overlay to help text pop -->
+  <!-- Overlay -->
   <div class="overlay"></div>
 
   <!-- Countdown Timer -->

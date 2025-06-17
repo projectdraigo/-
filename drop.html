@@ -15,188 +15,111 @@
       height: 100%;
       font-family: 'Helvetica Neue', sans-serif;
       color: white;
-      cursor: url('gothiccursordraigo.jpg'), auto;
-      overflow-x: hidden;
       background: black;
+      overflow-x: hidden;
+      user-select: none;
     }
 
-    video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
+    .content {
       height: 100vh;
-      object-fit: cover;
-      z-index: -2;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: -1;
-    }
-
-    .top-section {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      z-index: 3;
+      gap: 20px;
+      padding-top: 60px;
     }
 
     .countdown-container {
       display: flex;
       justify-content: center;
-      gap: 10px;
-      padding: 10px 0 0;
-      font-family: 'Helvetica Neue', sans-serif;
-      user-select: none;
+      gap: 12px;
+      max-width: 400px;
+      width: 100%;
     }
 
     .countdown-box {
-      background: #111;
-      padding: 8px 6px;
-      border-radius: 4px;
+      background: rgba(0,0,0,0.6);
+      padding: 10px 8px;
+      border-radius: 6px;
       text-align: center;
-      font-size: 0.75rem;
-      font-weight: 500;
-      min-width: 45px;
-      border: 1px solid #444;
-      box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+      font-size: 1rem;
+      font-weight: 600;
+      min-width: 65px;
+      border: 1.5px solid #fff;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.15);
       color: white;
     }
 
     .countdown-box span {
-      font-size: 1rem;
-      font-weight: bold;
+      font-size: 2rem;
+      font-weight: 700;
       display: block;
+      line-height: 1;
       color: white;
-    }
-
-    .back-btn-wrapper {
-      display: flex;
-      justify-content: center;
-      padding: 10px 0;
     }
 
     .back-btn {
       background: rgba(255, 255, 255, 0.1);
       color: white;
       border: none;
-      padding: 10px 20px;
-      font-size: 0.9rem;
+      padding: 10px 26px;
+      font-size: 1rem;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: 6px;
       transition: background 0.3s;
-      user-select: none;
+      max-width: 150px;
+      width: 100%;
     }
 
     .back-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .content {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      z-index: 1;
-      opacity: 0;
-      animation: fadeIn 0.5s ease forwards;
-      animation-delay: 0.5s;
-      user-select: none;
-      padding-top: 100px; /* ensures content doesn't hide under top bar */
-    }
-
-    h1 {
-      font-size: clamp(1.8rem, 5vw, 2rem);
-      letter-spacing: 2px;
-      background: linear-gradient(90deg, #ffffff, #bbbbbb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .second-page {
-      padding: 120px 10vw 60px;
-      background: #111;
-      text-align: center;
-      line-height: 1.8;
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      font-weight: 300;
-      letter-spacing: 0.5px;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+      background: rgba(255, 255, 255, 0.25);
     }
 
     @media (max-width: 768px) {
-      .back-btn-wrapper {
-        flex-direction: column;
-        align-items: center;
+      .countdown-container {
+        gap: 8px;
+      }
+      .countdown-box {
+        padding: 8px 6px;
+        font-size: 0.85rem;
+        min-width: 50px;
+      }
+      .countdown-box span {
+        font-size: 1.5rem;
+      }
+      .back-btn {
+        font-size: 0.9rem;
+        padding: 8px 18px;
+        max-width: 130px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Video background -->
-  <video autoplay muted loop playsinline>
-    <source src="draigovideo.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-
-  <!-- Overlay -->
-  <div class="overlay"></div>
-
-  <!-- Countdown + Back button section (Fixed to top) -->
-  <div class="top-section">
+  <div class="content">
     <div class="countdown-container">
       <div class="countdown-box"><span id="days">00</span><br>Days</div>
       <div class="countdown-box"><span id="hours">00</span><br>Hours</div>
       <div class="countdown-box"><span id="minutes">00</span><br>Mins</div>
       <div class="countdown-box"><span id="seconds">00</span><br>Secs</div>
     </div>
-    <div class="back-btn-wrapper">
-      <button class="back-btn" onclick="window.location.href='index.html'">← Back</button>
-    </div>
+    <button class="back-btn" onclick="window.location.href='index.html'">Back</button>
   </div>
 
-  <!-- Hero Section -->
-  <div class="content">
-    <h1>ESSENTIALS, MARCH, 2026, DRAIGO</h1>
-  </div>
-
-  <!-- Second Page -->
-  <div class="second-page">
-    <p>
-      The <strong>ESSENTIALS</strong> drop delivers a refined collection of everyday staples—clean, minimalist silhouettes crafted from heavyweight materials for durability and comfort. Rooted in an opium-inspired palette, the pieces evoke a moody, elevated vibe while remaining versatile for daily wear. Designed with intention, the collection blends streetwear edge with timeless form, making it a go-to for effortless layering and modern uniform dressing.
-    </p>
-  </div>
-
-  <!-- Countdown Script -->
   <script>
     const targetDate = new Date("March 31, 2026 00:00:00").getTime();
 
-    const updateCountdown = () => {
+    function updateCountdown() {
       const now = new Date().getTime();
       const distance = targetDate - now;
 
       if (distance <= 0) {
-        document.getElementById("days").innerText = "00";
-        document.getElementById("hours").innerText = "00";
-        document.getElementById("minutes").innerText = "00";
-        document.getElementById("seconds").innerText = "00";
+        ['days', 'hours', 'minutes', 'seconds'].forEach(id => {
+          document.getElementById(id).innerText = "00";
+        });
         return;
       }
 
@@ -209,7 +132,7 @@
       document.getElementById("hours").innerText = String(hours).padStart(2, "0");
       document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
       document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
-    };
+    }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);

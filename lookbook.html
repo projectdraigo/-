@@ -12,7 +12,7 @@
       height: 100vh;
       background: 
         linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-        url('https://i.pinimg.com/736x/0c/ae/ef/0caeef1232b63ca36833b8d5096fb6f6.jpg) no-repeat center center / cover;
+        url('https://i.pinimg.com/736x/0c/ae/ef/0caeef1232b63ca36833b8d5096fb6f6.jpg') no-repeat center center / cover;
       color: white;
       display: flex;
       flex-direction: column;
@@ -87,6 +87,7 @@
 
     .password-section button:hover {
       background: #ccc;
+      color: #111;
     }
   </style>
 </head>
@@ -111,10 +112,10 @@
   <script>
     function checkPassword() {
       const password = document.getElementById('passwordInput').value;
-      const correctPassword = 'draigo2026'; // change this to whatever you want
+      const correctPassword = 'draigo2026'; // change this if needed
 
       if (password === correctPassword) {
-        window.location.href = 'vault.html'; // change this to the page you want to show
+        window.location.href = 'vault.html'; // update path if needed
       } else {
         alert('Wrong password. Try again.');
       }

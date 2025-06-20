@@ -7,44 +7,47 @@
   <link rel="icon" href="https://i.pinimg.com/736x/8c/56/87/8c5687c8d8f032193f248687577b0940.jpg" type="image/jpeg" />
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
+      padding: 2rem;
       height: 100vh;
-      background: 
+      background:
         linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
         url('https://i.pinimg.com/736x/0c/ae/ef/0caeef1232b63ca36833b8d5096fb6f6.jpg') no-repeat center center / cover;
+      font-family: 'UnifrakturCook', cursive, Arial, sans-serif;
       color: white;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      font-family: 'UnifrakturCook', cursive, Arial, sans-serif;
+      justify-content: center;
       text-align: center;
-      padding: 2rem;
-      box-sizing: border-box;
-      position: relative;
     }
 
     h1 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      margin-bottom: 1.5rem;
     }
 
     p {
       font-family: Arial, sans-serif;
-      font-size: 1rem;
+      font-size: clamp(1rem, 2vw, 1.2rem);
       color: #ccc;
       max-width: 800px;
       line-height: 1.6;
+      margin: 0 auto;
     }
 
     .exit-button {
       margin-top: 2rem;
-      padding: 0.5rem 1.2rem;
+      padding: 0.6rem 1.4rem;
       font-size: 1rem;
       font-family: Arial, sans-serif;
       color: white;
-      background-color: transparent;
+      background: transparent;
       border: 2px solid white;
       cursor: pointer;
       text-decoration: none;
@@ -57,25 +60,28 @@
     }
 
     .password-section {
-      position: absolute;
-      bottom: 2rem;
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       width: 100%;
-      text-align: center;
     }
 
     .password-section input {
-      padding: 0.6rem;
+      padding: 0.7rem;
       font-size: 1rem;
       border: 1px solid #ccc;
       background: #111;
       color: white;
-      outline: none;
       border-radius: 4px;
-      margin-right: 0.5rem;
+      outline: none;
+      margin-bottom: 0.7rem;
+      width: 90%;
+      max-width: 300px;
     }
 
     .password-section button {
-      padding: 0.6rem 1rem;
+      padding: 0.7rem 1.2rem;
       font-size: 1rem;
       background: #111;
       color: white;
@@ -98,24 +104,25 @@
     <br><br>
     Draigo is bigger than a clothing brand — it’s a mindset. We’re here to prove that real ideas, built from the ground up, still matter. This is for the ones with no backing, no clout, just a vision and the guts to chase it. We don’t follow trends — we shape identity through design, story, and intention. But we’re not just putting out finished products — we’re opening the vault. You’ll see everything: the moodboards, the first sketches, the mess-ups, the late-night edits, the sample fails, the real convos behind the scenes. Every piece has a history, and we’re giving you access to all of it. This is free game for the next wave — no gatekeeping, no polish, just truth.
     <br><br>
-    The vault opens soon to public. Stay Tuned
+    The vault opens soon to public. Stay Tuned.
     <br><br>
-    We will be dropping hints on IG for the password, stay tuned
+    We will be dropping hints on IG for the password. Stay locked in.
   </p>
   <a href="index.html" class="exit-button">Exit</a>
 
-  <div class="password-section">
-    <input type="password" id="passwordInput" placeholder="Enter password..." />
-    <button onclick="checkPassword()">Enter</button>
-  </div>
+  <form class="password-section" onsubmit="checkPassword(event)">
+    <input type="password" id="passwordInput" placeholder="Enter password..." required />
+    <button type="submit">Enter</button>
+  </form>
 
   <script>
-    function checkPassword() {
-      const password = document.getElementById('passwordInput').value;
-      const correctPassword = 'draigo2026'; // change this if needed
+    function checkPassword(event) {
+      event.preventDefault();
+      const password = document.getElementById('passwordInput').value.trim();
+      const correctPassword = 'draigo2026';
 
       if (password === correctPassword) {
-        window.location.href = 'vault.html'; // update path if needed
+        window.location.href = 'vault.html';
       } else {
         alert('Wrong password. Try again.');
       }

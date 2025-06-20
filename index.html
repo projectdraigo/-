@@ -37,25 +37,14 @@
       box-sizing: border-box;
     }
 
-    h1 {
-      font-size: clamp(3rem, 10vw, 6rem);
-      padding: 0.5rem;
-      line-height: 1.2;
+    .center-gif {
+      max-width: 90%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
       opacity: 0;
-      animation: fadeIn 0.5s ease forwards;
-      animation-delay: 0.3s;
-    }
-
-    h1 span {
-      display: inline-block;
-      transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
-      cursor: default;
-    }
-
-    h1 span:hover {
-      transform: scale(1.4);
-      color: var(--accent);
-      text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+      animation: fadeIn 0.8s ease forwards;
+      animation-delay: 0.2s;
     }
 
     .footer-links {
@@ -65,7 +54,6 @@
       display: flex;
       justify-content: center;
       gap: 2rem;
-      /* Removed background block */
       padding: 0.5rem 1rem;
       box-sizing: border-box;
       font-family: Arial, sans-serif;
@@ -113,9 +101,8 @@
 </head>
 <body>
 
-  <h1 id="title">
-    <span>D</span><span>R</span><span>A</span><span>I</span><span>G</span><span>O</span>
-  </h1>
+  <!-- Replaced the DRAIGO text with the GIF -->
+  <img src="3dgifmaker05075.gif" alt="Draigo Intro GIF" class="center-gif" />
 
   <div class="footer-links">
     <a href="newsletter.html">Newsletter</a>
